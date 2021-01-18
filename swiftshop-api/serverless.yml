@@ -20,14 +20,14 @@ provider:
     - Effect: "Allow"
       Action:
         - dynamodb:PutItem
-        - SES:*
-      Resource: "arn:aws:dynamodb:us-east-1:*table/users"
+        #- SES:*
+      Resource: "arn:aws:dynamodb:us-east-1:*:table/users"
 
 functions:
   createUser:
     handler: handler.handler
     events:
-     - http:
+     - httpApi:
         path: /user
         method: post
         cors: true
